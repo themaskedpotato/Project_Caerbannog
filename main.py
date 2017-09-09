@@ -13,14 +13,14 @@ except ImportError as err:
 	print ("A module cannot be loaded")
 	sys.exit(2)
 
-myArrayOfChar = []
-myArrayOfRoom = []
+array_of_char = []
+array_of_room = []
 
-my_map_generator = map_gen_options(9,10,1,6)
-my_map = map(myArrayOfRoom, my_map_generator)
+map_generator = map_gen_options(9,10,1,6)
+my_map = map(array_of_room, my_map_generator)
 
-room_gen = room_gen_options(10,10,1,6,"square")
-room = room(myArrayOfChar, room_gen)
+room_genenerator = room_gen_options(10,10,1,6,"square")
+room = room(array_of_char, room_gen)
 
 
 pygame.init()
