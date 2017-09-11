@@ -25,12 +25,12 @@ my_map = map(array_of_room, map_generator)
 
 array_of_char = get_RoundRoom(10, 25) #pos x
 array_of_char = floor_filling(ra)
-screen_size = get_room_size(array_of_char)
+#get_room_size(array_of_char)
 
 
 # Create the window
 pygame.init()
-fenetre = pygame.display.set_mode(screen_size)
+fenetre = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Project Caerbannog")
 fenetre.fill(WHITE)
 
