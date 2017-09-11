@@ -1,5 +1,4 @@
 from constants import *
-import math
 
 # Take a size as 'x' and 'y'
 # Return an array of char
@@ -9,6 +8,8 @@ import math
 #       #     #
 #       #     #
 #       #######
+
+
 def get_SquareRoom(x, y):
     # Generator to create an empty square
     room_array = [[' '] * x for i in range(y)]
@@ -71,29 +72,64 @@ def get_RoundRoom(w, h):
             x -= 1
         sigma += a2 * ((4 * y) + 6)
         y += 1
+
+    # fill the fllor inside the ellipse
+    room_array = floor_filling(room_array)
     return room_array
 
 
-# # TEST PURPOSE
-# import sys
+def find_NextItem(map_line, x_pos, item):
+    # 'line' of the map to parse
+    # 'position' in the line to start research
+    # 'item' to look for
+    y = 0
+    x = x_pos + 1
+    x = x_pos + 1 if x_pos + 1 < len(map_line) else x_pos
+    while x < len(map_line):  # parse the line
+        if map_line[x] != item:
+            y += 1  # increment y if the item isn't found
+        else:
+            return y  # return the distance to item from x_pos if any
+        x += 1
+    return 0  # return 0 if no item has been found
 
 
-# def writch(a):
-#     # write char
-#     sys.stdout.write(a)
-#     sys.stdout.flush()
+def floor_filling(map_array):
+    for i in range(len(map_array)):
+        for j in range(len(map_array[i])):
+            if map_array[i][j] == WALL:
+                ln = find_NextItem(map_array[i], j, WALL)
+                if ln:
+                    k = j
+                    while j < k + ln:
+                        map_array[i][j + 1] = FLOOR
+                        j += 1
+    return map_array
 
 
-# # ra = get_RoundRoom2(5, 5)
-# # ra = get_SquareRoom(10, 30)
-# ra = get_RoundRoom(8, 6) #pos x
-# for i in range(len(ra)):
-#         writch('\n')
-#         for j in range(len(ra[i])):
-#             if ra[i][j] == ' ':
-# #                print(ra[i][j])
-#                 writch('X')
-#             elif ra[i][j] == '#':
-#                 writch('#')
-#             else:
-#                 writch('!')
+# TEST PURPOSE
+import sys
+
+
+def writch(a):
+    # write char
+    sys.stdout.write(a)
+    sys.stdout.flush()
+
+
+# ra = get_RoundRoom2(5, 5)
+# ra = get_SquareRoom(10, 30)
+ra = get_RoundRoom(15, 20) #pos x
+for i in range(len(ra)):
+        writch('\n')
+        for j in range(len(ra[i])):
+            if ra[i][j] == ' ':
+#                print(ra[i][j])
+                writch('X')
+            elif ra[i][j] == '#':
+                writch('#')
+            else:
+                writch('!')
+# test = [20, 20, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# ret = find_NextItem(test, 0, 20)
+# print(ret, len(test))
