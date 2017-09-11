@@ -9,6 +9,6 @@ class room_gen_options:
 
 class room:
 	"""creating a room"""
-	def __init__(self, array_of_char, room_gen_options):
-		self.array_of_char = array_of_char
+	def __init__(self, array_map, room_gen_options):
+		self.array_map = array_map
 		self.room_gen_options = room_gen_options
