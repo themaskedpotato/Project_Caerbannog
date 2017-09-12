@@ -1,5 +1,6 @@
 from constants import *
 
+
 # Take a size as 'x' and 'y'
 # Return an array of char
 # ex :
@@ -127,18 +128,18 @@ def get_room_size(map_array):
 
 # ra = get_RoundRoom2(5, 5)
 # ra = get_SquareRoom(10, 30)
-ra = get_RoundRoom(15, 20) #pos x
-ra = floor_filling(ra)
-for i in range(len(ra)):
-        writch('\n')
-        for j in range(len(ra[i])):
-            if ra[i][j] == 'X':
-#                print(ra[i][j])
-                writch('X')
-            elif ra[i][j] == '#':
-                writch('#')
-            else:
-                writch('!')
+#ra = get_RoundRoom(15, 20) #pos x
+# ra = floor_filling(ra)
+# for i in range(len(ra)):
+#         writch('\n')
+#         for j in range(len(ra[i])):
+#             if ra[i][j] == 'X':
+# #                print(ra[i][j])
+#                 writch('X')
+#             elif ra[i][j] == '#':
+#                 writch('#')
+#             else:
+#                 writch('!')
 # test = [20, 20, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 # ret = find_NextItem(test, 0, 20)
 # print(ret, len(test))
